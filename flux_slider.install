@@ -7,12 +7,14 @@
 /**
  * Implements hook_requirements().
  */
+
 function flux_slider_requirements($phase) {
   $requirements = array();
   // Ensure translations dont break during installation.
   $t = get_t();
   // Check requirements during runtime phase.
-  if ($phase == 'runtime' || $phase == 'install') {
+  //if ($phase == 'runtime' || $phase == 'install') {
+  if ($phase == 'runtime') {
     // Check if Flux Slider jQuery plugin is installed.
     if (($library = libraries_detect('flux-slider')) && !empty($library['installed'])) {
       $requirements['flux_slider_library'] = array(
@@ -48,7 +50,7 @@ function flux_slider_uninstall() {
   variable_del('third_capt');
   variable_del('fourth_capt');
 
-  // TODO: Delete the folder the slider images were contained in.
+  // @todo: Delete the folder the slider images were contained in.
   // Remove slide variables.
   variable_del('trans_type');
   variable_del('trans_autoplay');

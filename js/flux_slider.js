@@ -39,13 +39,12 @@
 
        // Initialise the slider.
         var myFlux = new flux.slider('#slider', {
-
           autoplay: flux_autoplay_bool,
           transitions: [flux_transition],
           delay: flux_delay,
-          pagination: 'flux_pagination_bool',
-          controls: 'flux_controls_bool',
-          captions: 'flux_captions_bool',
+          pagination: 'FALSE',
+          controls: 'FALSE',
+          captions: 'FALSE',
           width: flux_width,
           height: flux_height,
         });

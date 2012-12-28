@@ -1,6 +1,7 @@
+
 name = Flux Slider
 description = Implementation of Flux Slider plugin
-package = Others
+package = Eye Candy
 core = 7.x
 
 files[] = flux_slider.module

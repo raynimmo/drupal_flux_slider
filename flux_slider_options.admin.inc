@@ -48,13 +48,14 @@ function flux_slider_option_configuration_form($form, &$form_state) {
       t('slide'),
       t('warp'),
       t('zip'),
-      t('bars3d <span class="small">Limited browser support</span>'),
-      t('blinds3d <span class="small">Limited browser support</span'),
-      t('cube <span class="small">Limited browser support</span'),
-      t('tiles3d <span class="small">Limited browser support</span'),
-      t('turn <span class="small">Limited browser support</span'),
+      t('bars3d'),
+      t('blinds3d'),
+      t('cube'),
+      t('tiles3d'),
+      t('turn'),
     )),
     '#title' => t('Select a transition to perform between slides.'),
+    '#description' => t('*note: some of the 3D transitions will not function for older browsers.'),
   );
 
   // Set up fieldset for optional settings.
