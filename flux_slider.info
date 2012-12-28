@@ -1,1 +1,11 @@
 name = Flux Slider
+description = Implementation of Flux Slider plugin
+package = Others
+core = 7.x
+
+files[] = flux_slider.module
+
+dependencies[] = block
+dependencies[] = libraries
+
+configure = admin/structure/flux-slider
