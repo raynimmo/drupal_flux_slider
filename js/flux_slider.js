@@ -16,22 +16,22 @@
 
        // Get the settings.
        var flux_autoplay = Drupal.settings.flux_slider.flux_autoplay;
-       var flux_autoplay_bool = (flux_autoplay == 'on' ? 'TRUE' : 'FALSE');
+       var flux_autoplay_bool = (flux_autoplay == 'on' ? false : true);
 
        var flux_transition = Drupal.settings.flux_slider.flux_transition;
 
        var flux_delay = Drupal.settings.flux_slider.flux_delay;
 
        var flux_pagination = Drupal.settings.flux_slider.flux_pagination;
-       var flux_pagination_bool = (flux_pagination == 'show' ? 'TRUE' : 'FALSE');
+       var flux_pagination_bool = (flux_pagination == 'show' ? true : false);
        console.log('pagination:'+flux_pagination+' > '+flux_pagination_bool);
 
        var flux_controls = Drupal.settings.flux_slider.flux_controls;
-       var flux_controls_bool = (flux_controls == 'show' ? 'TRUE' : 'FALSE');
+       var flux_controls_bool = (flux_controls == 'show' ? true : false);
        console.log('controls:'+flux_controls+' > '+flux_controls_bool);
 
        var flux_captions = Drupal.settings.flux_slider.flux_captions;
-       var flux_captions_bool = (flux_captions == 'show' ? 'TRUE' : 'FALSE');
+       var flux_captions_bool = (flux_captions == 'show' ? true : false);
        console.log('captions:'+flux_captions+' > '+flux_captions_bool);
 
        var flux_width = Drupal.settings.flux_slider.flux_width;
@@ -42,9 +42,9 @@
           autoplay: flux_autoplay_bool,
           transitions: [flux_transition],
           delay: flux_delay,
-          pagination: 'FALSE',
-          controls: 'FALSE',
-          captions: 'FALSE',
+          pagination: flux_pagination_bool,
+          controls: flux_controls_bool,
+          captions: flux_captions_bool,
           width: flux_width,
           height: flux_height,
         });
