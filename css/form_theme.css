@@ -3,7 +3,7 @@
 /*slider options page styling*/
 fieldset#edit-trans-radios,
 fieldset#edit-trans-opts{
-  min-height:475px;
+  min-height:570px;
 }
 fieldset#edit-trans-radios.collapsed,
 fieldset#edit-trans-opts.collapsed{

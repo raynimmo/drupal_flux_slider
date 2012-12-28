@@ -14,7 +14,17 @@ DESCRIPTION:
 Module for integrating the Flux Slider JavaScript library and
 controlling its settings through an administration interface.
 
-See http://www.joelambert.co.uk/flux and
+The Flux Library must be installed at /sites/all/libraries/
+
+To download the Flux Library go to
+https://github.com/joelambert/Flux-Slider
+
+Or get it directly from:
+http://www.joelambert.co.uk/flux/js/flux.js
+or:
+http://www.joelambert.co.uk/flux/js/flux.min.js
+
+For further information see http://www.joelambert.co.uk/flux and
 http://blog.joelambert.co.uk/2011/05/05/ ...
  ... flux-slider-css3-animation-based-image-transitions/
 
@@ -53,18 +63,19 @@ INSTALLATION:
      Admin > Modules
 
 3. If you want anyone besides the administrative user to be able
-   to configure the Flux Slider (usually a bad idea), they must be given
-   the "administer actions" access permission:
+   to configure the Flux Slider (usually a bad idea), they must be
+   given the "administer flux slider" access permission:
 
      Admin > People > Permissions
 
    When the module is enabled and the user has the "administer
-   actions" permission, an "Flux Slider" menu should appear under
+   flux slider" permission, an "Flux Slider" menu should appear under
    Admin > Structure in the menu system.
 
 ********************************************************************
 
-Additional plans;
+Future plans;
+Add user upload for adding/replacing images
 Add support for more images to be contained within the slider
 
 

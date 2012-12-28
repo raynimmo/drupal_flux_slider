@@ -1,9 +1,7 @@
 <?php
 /**
  * @file
- * A module implementing the Flux Slider plugin.
- *
- * See http://www.joelambert.co.uk/flux/.
+ * A module implementing the Flux Slider Library.
  */
 
 /**
@@ -11,7 +9,7 @@
  */
 function flux_slider_help($path, $arg) {
   if ($path == 'admin/help#flux_slider') {
-    return t('help description for flux slider.');
+    return t('Please refer to the README.txt for further information regarding the use of the Flux Slider module.');
   }
 }
 
@@ -76,7 +74,7 @@ function flux_slider_block_info() {
 }
 
 /**
- * Custom function to retrieve default images from module directory.
+ * Function to retrieve image paths from database.
  */
 function flux_slider_get_images() {
   $images = array();
@@ -89,6 +87,19 @@ function flux_slider_get_images() {
 }
 
 /**
+ * Function to retrieve captions from database.
+ */
+function flux_slider_get_captions() {
+  $captions = array();
+  $captions = array(
+    variable_get('first_capt'),
+    variable_get('second_capt'),
+    variable_get('third_capt'),
+    variable_get('fourth_capt'));
+  return $captions;
+}
+
+/**
  * Implements hook_block_view().
  */
 function flux_slider_block_view($block_name = '') {
@@ -98,21 +109,26 @@ function flux_slider_block_view($block_name = '') {
     // Get the images.
     $images = flux_slider_get_images();
     $img_alt = 'default alternative text';
+    // Get the captions.
+    $captions = flux_slider_get_captions();
     $img_width = variable_get('trans_width');
     $img_height = variable_get('trans_height');
     $img_class = 'slider-images';
     $attributes = array($img_class);
     $all_images = '';
-
+    $caption_count = 0;
+    // Build the images.
     foreach ($images as $img_path) {
       $image = theme('image', array(
         'path' => $img_path,
         'alt' => $img_alt,
+        'title' => $captions[$caption_count],
         'width' => $img_width,
         'height' => $img_height,
         'attributes' => $attributes,
       ));
       $all_images = $all_images . $image;
+      $caption_count++;
     }
     $content = '<div id="slider">' . $all_images . '</div>';
 

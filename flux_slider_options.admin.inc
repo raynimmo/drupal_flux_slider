@@ -1,6 +1,6 @@
 <?php
 /**
- * @file.
+ * @file
  * Generate configuration form and save settings.
  *
  * Available transitions.
@@ -43,6 +43,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
       t('bars'),
       t('blinds'),
       t('blocks'),
+      t('blocks2'),
       t('concentric'),
       t('dissolve'),
       t('slide'),

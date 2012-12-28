@@ -1,32 +1,49 @@
 <?php
 /**
- * @file.
+ * @file
  * Install, update and uninstall functions for Flux Slider module.
  */
 
 /**
+ * Implements hook_install().
+ */
+function flux_slider_install() {
+  // Set up basic settings so the slider works when installed.
+  variable_set('trans_type', 'blocks2');
+  variable_set('trans_autoplay', 'on');
+  variable_set('trans_delay', 6000);
+  variable_set('trans_pagination', 'hide');
+  variable_set('trans_controls', 'show');
+  variable_set('trans_captions', 'show');
+  variable_set('trans_width', 900);
+  variable_set('trans_height', 400);
+}
+
+/**
  * Implements hook_requirements().
  */
-
 function flux_slider_requirements($phase) {
   $requirements = array();
   // Ensure translations dont break during installation.
   $t = get_t();
+  // Get the path to the library.
+  $path = libraries_get_path('flux-slider');
+  $installed = file_exists($path . '/flux.min.js') && file_exists($path . '/flux.js');
+
   // Check requirements during runtime phase.
-  //if ($phase == 'runtime' || $phase == 'install') {
   if ($phase == 'runtime') {
-    // Check if Flux Slider jQuery plugin is installed.
-    if (($library = libraries_detect('flux-slider')) && !empty($library['installed'])) {
+    // Check if Flux Slider library is installed.
+    if ($installed) {
       $requirements['flux_slider_library'] = array(
-        'title' => 'Flux Slider jQuery plugin',
+        'title' => 'Flux Slider JavaScript Library',
         'value' => 'Installed',
         'severity' => REQUIREMENT_OK,
       );
     }
     else {
       $requirements['flux_slider_library'] = array(
-        'title' => 'Flux Slider jQuery plugin',
-        'value' => 'Not Installed, please visit <a href="http://www.joelambert.co.uk/flux/" target="_blank" title="This will open in a new tab">www.joelambert.co.uk/flux/</a> and save the JavaScript plugin in your sites/all/libraries/flux-slider/ directory.<br /> (debug: phase => ' . $phase . ')<br />Library: ' . $library,
+        'title' => 'Flux Slider JavaScript Library',
+        'value' => 'Not Installed, please see the README.txt for instructions on installing the library',
         'severity' => REQUIREMENT_ERROR,
       );
     }

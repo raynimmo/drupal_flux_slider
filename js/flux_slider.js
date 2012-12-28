@@ -1,5 +1,5 @@
 /**
- * @file.
+ * @file
  * Javascript functions for Flux Slider module.
  */
 

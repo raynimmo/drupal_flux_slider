@@ -1,6 +1,6 @@
 <?php
 /**
- * @file.
+ * @file
  * Generate configuration form and save settings.
  */
 
@@ -41,7 +41,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // First image field.
   $form['slider_imgs']['slider_imgs_first']['first_img'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('first_img', $path . '/images/'),
+    '#default_value' => variable_get('first_img', $path . '/images/slider-img-1.jpg'),
     '#title' => t('First image path'),
     '#size' => 60,
     '#weight' => 3,
@@ -49,7 +49,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // First caption field.
   $form['slider_imgs']['slider_imgs_first']['first_capt'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('first_capt', 'first'),
+    '#default_value' => variable_get('first_capt', 'This is the first caption'),
     '#title' => t('First caption'),
     '#size' => 40,
     '#weight' => 4,
@@ -64,7 +64,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Second image field.
   $form['slider_imgs']['slider_imgs_second']['second_img'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('second_img', $path . '/images/'),
+    '#default_value' => variable_get('second_img', $path . '/images/slider-img-2.jpg'),
     '#title' => t('Second image path'),
     '#size' => 60,
     '#weight' => 6,
@@ -72,7 +72,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Second caption field.
   $form['slider_imgs']['slider_imgs_second']['second_capt'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('second_capt', 'second'),
+    '#default_value' => variable_get('second_capt', 'This is the second caption'),
     '#title' => t('Second caption'),
     '#size' => 40,
     '#weight' => 7,
@@ -87,7 +87,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Third image field.
   $form['slider_imgs']['slider_imgs_third']['third_img'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('third_img', $path . '/images/'),
+    '#default_value' => variable_get('third_img', $path . '/images/slider-img-3.jpg'),
     '#title' => t('Third image path'),
     '#size' => 60,
     '#weight' => 9,
@@ -95,7 +95,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Third caption field.
   $form['slider_imgs']['slider_imgs_third']['third_capt'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('third_capt', 'third'),
+    '#default_value' => variable_get('third_capt', 'This is the third caption'),
     '#title' => t('Third caption'),
     '#size' => 40,
     '#weight' => 10,
@@ -110,7 +110,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Fourth image field.
   $form['slider_imgs']['slider_imgs_fourth']['fourth_img'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('fourth_img', $path . '/images/'),
+    '#default_value' => variable_get('fourth_img', $path . '/images/slider-img-4.jpg'),
     '#title' => t('Fourth image path'),
     '#size' => 60,
     '#weight' => 12,
@@ -118,17 +118,10 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   // Fourth caption field.
   $form['slider_imgs']['slider_imgs_fourth']['fourth_capt'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('fourth_capt', 'fourth'),
+    '#default_value' => variable_get('fourth_capt', 'This is the fourth caption'),
     '#title' => t('Fourth caption'),
     '#size' => 40,
     '#weight' => 13,
-  );
-
-  // Upload images.
-  $form['upload'] = array(
-    '#type' => 'file',
-    '#title' => t('Upload a new image for use in the slider'),
-    '#weight' => 14,
   );
   return system_settings_form($form);
 }
