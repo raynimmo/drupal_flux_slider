@@ -13,7 +13,6 @@
 (function ($) {
    Drupal.behaviors.fluxSlider = {
      attach: function (context, settings) {
-
        // Get the settings.
        var flux_autoplay = Drupal.settings.flux_slider.flux_autoplay;
        var flux_autoplay_bool = (flux_autoplay == 'on' ? false : true);

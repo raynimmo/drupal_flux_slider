@@ -76,13 +76,13 @@ function flux_slider_block_info() {
 /**
  * Function to retrieve image paths from database.
  */
-function flux_slider_get_images() {
+function flux_slider_get_images($path) {
   $images = array();
   $images = array(
-    variable_get('first_img'),
-    variable_get('second_img'),
-    variable_get('third_img'),
-    variable_get('fourth_img'));
+    variable_get('first_img', $path . '/images/slider-img-1.jpg'),
+    variable_get('second_img', $path . '/images/slider-img-2.jpg'),
+    variable_get('third_img', $path . '/images/slider-img-3.jpg'),
+    variable_get('fourth_img', $path . '/images/slider-img-4.jpg'),);
   return $images;
 }
 
@@ -92,10 +92,10 @@ function flux_slider_get_images() {
 function flux_slider_get_captions() {
   $captions = array();
   $captions = array(
-    variable_get('first_capt'),
-    variable_get('second_capt'),
-    variable_get('third_capt'),
-    variable_get('fourth_capt'));
+    variable_get('first_capt', 'This is the first caption'),
+    variable_get('second_capt', 'This is the second caption'),
+    variable_get('third_capt', 'This is the third caption'),
+    variable_get('fourth_capt', 'This is the fourth caption'),);
   return $captions;
 }
 
@@ -107,7 +107,7 @@ function flux_slider_block_view($block_name = '') {
     // Set up the slider variables.
     $module_path = drupal_get_path('module', 'flux_slider');
     // Get the images.
-    $images = flux_slider_get_images();
+    $images = flux_slider_get_images($module_path);
     $img_alt = 'default alternative text';
     // Get the captions.
     $captions = flux_slider_get_captions();

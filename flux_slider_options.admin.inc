@@ -12,7 +12,6 @@
  * Configuration form for slider options.
  */
 function flux_slider_option_configuration_form($form, &$form_state) {
-
   // Get the path to the module.
   $path = drupal_get_path('module', 'flux_slider');
   // Attach the JS and CSS to the form.
