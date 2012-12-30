@@ -1,8 +1,11 @@
+
 name = Flux Slider
-description = "Implementation of Flux Slider library"
+description = Implementation of Flux Slider library
 core = 7.x
 
 files[] = flux_slider.module
+files[] = flux_slider_options.admin.inc
+files[] = flux_slider_slides.admin.inc
 
 dependencies[] = block
 dependencies[] = libraries

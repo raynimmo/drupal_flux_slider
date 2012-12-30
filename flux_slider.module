@@ -104,6 +104,15 @@ function flux_slider_get_captions() {
  */
 function flux_slider_block_view($block_name = '') {
   if ($block_name == 'flux_slider') {
+    // Check if the flux library has been installed
+    global $base_path;
+    $flux_path = $_SERVER['DOCUMENT_ROOT'] . $base_path . '/sites/all/libraries/flux-slider';
+    $installed = file_exists($flux_path . '/flux.min.js') || file_exists($flux_path . '/flux.js');
+
+    if(!$installed) {
+      drupal_set_message(t('The Flux Slider library is not installed, consult the modules README.txt for instructions.'), 'error');
+    }
+    else {
     // Set up the slider variables.
     $module_path = drupal_get_path('module', 'flux_slider');
     // Get the images.
@@ -166,5 +175,6 @@ function flux_slider_block_view($block_name = '') {
       'content' => $content,
     );
     return $block;
+    }
   }
 }

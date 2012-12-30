@@ -17,6 +17,19 @@ function flux_slider_install() {
   variable_set('trans_captions', 'show');
   variable_set('trans_width', 900);
   variable_set('trans_height', 400);
+
+  // Set up the default image paths
+  $module_path = drupal_get_path('module', 'flux_slider');
+  variable_set('first_img', $module_path . '/images/slider-img-1.jpg');
+  variable_set('second_img', $module_path . '/images/slider-img-2.jpg');
+  variable_set('third_img', $module_path . '/images/slider-img-3.jpg');
+  variable_set('fourth_img', $module_path . '/images/slider-img-4.jpg');
+
+  // Set up the default caption values.
+  variable_set('first_capt', 'This is the first caption');
+  variable_set('second_capt', 'This is the second caption');
+  variable_set('third_capt', 'This is the third caption');
+  variable_set('fourth_capt', 'This is the fourth caption');
 }
 
 /**
@@ -28,8 +41,8 @@ function flux_slider_requirements($phase) {
   $t = get_t();
   // Check if Libraries API module is installed
   global $base_path;
-  $path = $base_path . '/sites/all/libraries/flux-slider';
-  $installed = file_exists($path . '/flux.min.js') && file_exists($path . '/flux.js');
+  $path = $_SERVER['DOCUMENT_ROOT'] . $base_path . 'sites/all/libraries/flux-slider';
+  $installed = file_exists($path . '/flux.min.js') || file_exists($path . '/flux.js');
 
   // Check requirements during runtime phase.
   if ($phase == 'runtime') {
