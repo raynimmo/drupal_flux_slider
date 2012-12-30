@@ -43,7 +43,6 @@ function flux_slider_requirements($phase) {
   global $base_path;
   $path = $_SERVER['DOCUMENT_ROOT'] . $base_path . 'sites/all/libraries/flux-slider';
   $installed = file_exists($path . '/flux.min.js') || file_exists($path . '/flux.js');
-
   // Check requirements during runtime phase.
   if ($phase == 'runtime') {
     // Check if Flux Slider library is installed.

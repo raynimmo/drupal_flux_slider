@@ -23,15 +23,12 @@
 
        var flux_pagination = Drupal.settings.flux_slider.flux_pagination;
        var flux_pagination_bool = (flux_pagination == 'show' ? true : false);
-       console.log('pagination:'+flux_pagination+' > '+flux_pagination_bool);
 
        var flux_controls = Drupal.settings.flux_slider.flux_controls;
        var flux_controls_bool = (flux_controls == 'show' ? true : false);
-       console.log('controls:'+flux_controls+' > '+flux_controls_bool);
 
        var flux_captions = Drupal.settings.flux_slider.flux_captions;
        var flux_captions_bool = (flux_captions == 'show' ? true : false);
-       console.log('captions:'+flux_captions+' > '+flux_captions_bool);
 
        var flux_width = Drupal.settings.flux_slider.flux_width;
        var flux_height = Drupal.settings.flux_slider.flux_height;

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Generate configuration form and save settings.

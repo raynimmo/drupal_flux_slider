@@ -50,7 +50,6 @@ Slider control features available through the admin panel are;
     transition width
     transition height
 
-
 ********************************************************************
 INSTALLATION:
 
