@@ -26,8 +26,9 @@ function flux_slider_requirements($phase) {
   $requirements = array();
   // Ensure translations dont break during installation.
   $t = get_t();
-  // Get the path to the library.
-  $path = libraries_get_path('flux-slider');
+  // Check if Libraries API module is installed
+  global $base_path;
+  $path = $base_path . '/sites/all/libraries/flux-slider';
   $installed = file_exists($path . '/flux.min.js') && file_exists($path . '/flux.js');
 
   // Check requirements during runtime phase.
@@ -47,8 +48,8 @@ function flux_slider_requirements($phase) {
         'severity' => REQUIREMENT_ERROR,
       );
     }
-    return $requirements;
   }
+  return $requirements;
 }
 
 /**
