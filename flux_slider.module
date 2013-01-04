@@ -20,7 +20,7 @@ function flux_slider_permission() {
   return array(
     'administer flux slider' => array(
       'title' => t('Administer Flux Slider'),
-      'description' => t('Allows a user to confgigure Flux Slider'),
+      'description' => t('Allows a user to configure Flux Slider'),
     ),
   );
 }

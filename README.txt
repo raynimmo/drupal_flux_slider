@@ -14,7 +14,8 @@ DESCRIPTION:
 Module for integrating the Flux Slider JavaScript library and
 controlling its settings through an administration interface.
 
-The Flux Library must be installed at /sites/all/libraries/
+The Flux Library must be installed at
+/sites/all/libraries/flux-slider
 
 To download the Flux Library go to
 https://github.com/joelambert/Flux-Slider
