@@ -6,9 +6,6 @@ Author: Ray Nimmo <ray at junglecreative dot com>
 Drupal: 7
 ********************************************************************
 
-NOTE: This is currently a sandbox project and should not be used on
-a live site.
-
 DESCRIPTION:
 
 Module for integrating the Flux Slider JavaScript library and

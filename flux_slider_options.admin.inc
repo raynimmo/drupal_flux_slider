@@ -21,10 +21,6 @@ function flux_slider_option_configuration_form($form, &$form_state) {
       'type' => 'file',
       'data' => $path . '/css/form_theme.css',
     ),
-    'js' => array(
-      'type' => 'file',
-      'data' => $path . '/js/form_theme.js',
-    ),
   );
 
   // Set up fieldset for radio buttons.
