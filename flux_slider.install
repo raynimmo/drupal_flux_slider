@@ -18,7 +18,7 @@ function flux_slider_install() {
   variable_set('trans_width', 900);
   variable_set('trans_height', 400);
 
-  // Set up the default image paths
+  // Set up the default image paths.
   $module_path = drupal_get_path('module', 'flux_slider');
   variable_set('first_img', $module_path . '/images/slider-img-1.jpg');
   variable_set('second_img', $module_path . '/images/slider-img-2.jpg');
@@ -39,7 +39,7 @@ function flux_slider_requirements($phase) {
   $requirements = array();
   // Ensure translations dont break during installation.
   $t = get_t();
-  // Check if Libraries API module is installed
+  // Check if Libraries API module is installed.
   global $base_path;
   $path = $_SERVER['DOCUMENT_ROOT'] . $base_path . 'sites/all/libraries/flux-slider';
   $installed = file_exists($path . '/flux.min.js') || file_exists($path . '/flux.js');

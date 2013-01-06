@@ -14,6 +14,7 @@
    Drupal.behaviors.fluxSlider = {
      attach: function (context, settings) {
        // Get the settings.
+
        var flux_autoplay = Drupal.settings.flux_slider.flux_autoplay;
        var flux_autoplay_bool = (flux_autoplay == 'on' ? false : true);
 
@@ -43,6 +44,11 @@
           captions: flux_captions_bool,
           width: flux_width,
           height: flux_height,
+        });
+        // Adjust container height to cope with bug http://drupal.org/node/1880556.
+        jQuery("div#slider").css({
+          "height":flux_height,
+          "overflow":"hidden"
         });
        }
      }
