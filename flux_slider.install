@@ -10,11 +10,11 @@
 function flux_slider_install() {
   // Set up basic settings so the slider works when installed.
   variable_set('trans_type', 'blocks2');
-  variable_set('trans_autoplay', 'on');
+  variable_set('trans_autoplay', 1);
   variable_set('trans_delay', 6000);
-  variable_set('trans_pagination', 'hide');
-  variable_set('trans_controls', 'show');
-  variable_set('trans_captions', 'show');
+  variable_set('trans_pagination', 0);
+  variable_set('trans_controls', 1);
+  variable_set('trans_captions', 1);
   variable_set('trans_width', 900);
   variable_set('trans_height', 400);
 
@@ -90,4 +90,15 @@ function flux_slider_uninstall() {
   variable_del('trans_captions');
   variable_del('trans_width');
   variable_del('trans_height');
+}
+
+/**
+ * Change current variables from string types to integers.
+ */
+function flux_slider_update_7001() {
+  variable_set('trans_autoplay', 1);
+  variable_set('trans_pagination', 0);
+  variable_set('trans_controls', 1);
+  variable_set('trans_captions', 1);
+  return t('Changing current variable values from text to boolean');
 }

@@ -10,7 +10,7 @@
 function flux_slider_slide_configuration_form($form, &$form_state) {
   // Get the path to the module.
   $path = drupal_get_path('module', 'flux_slider');
-  // Attach the JS and CSS to the form.
+  // Attach the CSS to the form.
   $form['#attached'] = array(
     'css' => array(
       'type' => 'file',
