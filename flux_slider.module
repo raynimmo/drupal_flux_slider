@@ -102,6 +102,20 @@ function flux_slider_get_captions() {
 }
 
 /**
+ * Function to retrieve alternative text for images from database.
+ */
+function flux_slider_get_alttext() {
+  $alttext = array();
+  $alttext = array(
+    variable_get('first_alt', 'This is the first alt text'),
+    variable_get('second_alt', 'This is the second alt text'),
+    variable_get('third_alt', 'This is the third alt text'),
+    variable_get('fourth_alt', 'This is the fourth alt text'),
+  );
+  return $alttext;
+}
+
+/**
  * Implements hook_block_view().
  */
 function flux_slider_block_view($block_name = '') {
@@ -119,7 +133,7 @@ function flux_slider_block_view($block_name = '') {
       $module_path = drupal_get_path('module', 'flux_slider');
       // Get the images.
       $images = flux_slider_get_images($module_path);
-      $img_alt = 'default alternative text';
+      $img_alt = flux_slider_get_alttext();
       // Get the captions.
       $captions = flux_slider_get_captions();
       $img_width = variable_get('trans_width');
@@ -127,20 +141,20 @@ function flux_slider_block_view($block_name = '') {
       $img_class = 'slider-images';
       $attributes = array($img_class);
       $all_images = '';
-      $caption_count = 0;
+      $slide_count = 0;
 
       // Build the images.
       foreach ($images as $img_path) {
         $image = theme('image', array(
           'path' => $img_path,
-          'alt' => $img_alt,
-          'title' => $captions[$caption_count],
+          'alt' => $img_alt[$slide_count],
+          'title' => $captions[$slide_count],
           'width' => $img_width,
           'height' => $img_height,
           'attributes' => $attributes,
         ));
         $all_images = $all_images . $image;
-        $caption_count++;
+        $slide_count++;
       }
       $content = '<div id="slider">' . $all_images . '</div>';
 

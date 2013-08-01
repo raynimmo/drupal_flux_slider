@@ -30,6 +30,12 @@ function flux_slider_install() {
   variable_set('second_capt', 'This is the second caption');
   variable_set('third_capt', 'This is the third caption');
   variable_set('fourth_capt', 'This is the fourth caption');
+
+  // Set up the default alt text values.
+  variable_set('first_alt', 'This is the first alt text');
+  variable_set('second_alt', 'This is the second alt text');
+  variable_set('third_alt', 'This is the third alt text');
+  variable_set('fourth_alt', 'This is the fourth alt text');
 }
 
 /**
@@ -80,6 +86,12 @@ function flux_slider_uninstall() {
   variable_del('third_capt');
   variable_del('fourth_capt');
 
+  // Delete all of the image alt text values.
+  variable_del('first_alt');
+  variable_del('second_alt');
+  variable_del('third_alt');
+  variable_del('fourth_alt');
+
   // @todo: Delete the folder the slider images were contained in.
   // Remove slide variables.
   variable_del('trans_type');
@@ -102,3 +114,14 @@ function flux_slider_update_7001() {
   variable_set('trans_captions', 1);
   return t('Changing current variable values from text to boolean');
 }
+/**
+ * Add variables to deal with the image alternative text value
+ */
+function flux_slider_update_7002() {
+  variable_set('first_alt', 'This is the first alt text');
+  variable_set('second_alt', 'This is the second alt text');
+  variable_set('third_alt', 'This is the third alt text');
+  variable_set('fourth_alt', 'This is the fourth alt text');
+  return t('Adding options of setting image alternative text values');
+}
+

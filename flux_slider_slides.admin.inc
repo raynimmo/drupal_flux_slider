@@ -49,11 +49,19 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 40,
     '#weight' => 4,
   );
+  // First alt text field.
+  $form['slider_imgs']['slider_imgs_first']['first_alt'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('first_alt', 'This is the first alt text'),
+    '#title' => t('Alternative text for the first image'),
+    '#size' => 40,
+    '#weight' => 5,
+  );
 
   $form['slider_imgs']['slider_imgs_second'] = array(
     '#type' => 'fieldset',
     '#title' => t('second Image'),
-    '#weight' => 5,
+    '#weight' => 6,
     '#collapsible' => TRUE,
   );
   // Second image field.
@@ -62,7 +70,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('second_img', $path . '/images/slider-img-2.jpg'),
     '#title' => t('Second image path'),
     '#size' => 60,
-    '#weight' => 6,
+    '#weight' => 7,
   );
   // Second caption field.
   $form['slider_imgs']['slider_imgs_second']['second_capt'] = array(
@@ -70,7 +78,15 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('second_capt', 'This is the second caption'),
     '#title' => t('Second caption'),
     '#size' => 40,
-    '#weight' => 7,
+    '#weight' => 8,
+  );
+  // Second alt text field.
+  $form['slider_imgs']['slider_imgs_second']['second_alt'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('second_alt', 'This is the second alt text'),
+    '#title' => t('Alternative text for the second image'),
+    '#size' => 40,
+    '#weight' => 9,
   );
 
   $form['slider_imgs']['slider_imgs_third'] = array(
@@ -85,7 +101,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('third_img', $path . '/images/slider-img-3.jpg'),
     '#title' => t('Third image path'),
     '#size' => 60,
-    '#weight' => 9,
+    '#weight' => 10,
   );
   // Third caption field.
   $form['slider_imgs']['slider_imgs_third']['third_capt'] = array(
@@ -93,13 +109,21 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('third_capt', 'This is the third caption'),
     '#title' => t('Third caption'),
     '#size' => 40,
-    '#weight' => 10,
+    '#weight' => 11,
+  );
+  // Third alt text field.
+  $form['slider_imgs']['slider_imgs_third']['third_alt'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('third_alt', 'This is the third alt text'),
+    '#title' => t('Alternative text for the third image'),
+    '#size' => 40,
+    '#weight' => 12,
   );
 
   $form['slider_imgs']['slider_imgs_fourth'] = array(
     '#type' => 'fieldset',
     '#title' => t('Fourth Image'),
-    '#weight' => 11,
+    '#weight' => 13,
     '#collapsible' => TRUE,
   );
   // Fourth image field.
@@ -108,7 +132,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('fourth_img', $path . '/images/slider-img-4.jpg'),
     '#title' => t('Fourth image path'),
     '#size' => 60,
-    '#weight' => 12,
+    '#weight' => 14,
   );
   // Fourth caption field.
   $form['slider_imgs']['slider_imgs_fourth']['fourth_capt'] = array(
@@ -116,7 +140,15 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#default_value' => variable_get('fourth_capt', 'This is the fourth caption'),
     '#title' => t('Fourth caption'),
     '#size' => 40,
-    '#weight' => 13,
+    '#weight' => 15,
+  );
+  // Fourth alt text field.
+  $form['slider_imgs']['slider_imgs_fourth']['fourth_alt'] = array(
+    '#type' => 'textfield',
+    '#default_value' => variable_get('fourth_alt', 'This is the fourth alt text'),
+    '#title' => t('Alternative text for the fourth image'),
+    '#size' => 40,
+    '#weight' => 16,
   );
   return system_settings_form($form);
 }
