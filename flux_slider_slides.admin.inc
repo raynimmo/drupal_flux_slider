@@ -28,7 +28,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
 
   $form['slider_imgs']['slider_imgs_first'] = array(
     '#type' => 'fieldset',
-    '#title' => t('First Image'),
+    '#title' => t('First image'),
     '#weight' => 2,
     '#collapsible' => TRUE,
   );
@@ -91,7 +91,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
 
   $form['slider_imgs']['slider_imgs_third'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Third Image'),
+    '#title' => t('Third image'),
     '#weight' => 8,
     '#collapsible' => TRUE,
   );
@@ -122,7 +122,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
 
   $form['slider_imgs']['slider_imgs_fourth'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Fourth Image'),
+    '#title' => t('Fourth image'),
     '#weight' => 13,
     '#collapsible' => TRUE,
   );

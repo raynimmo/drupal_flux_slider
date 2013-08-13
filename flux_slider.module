@@ -10,7 +10,7 @@
 function flux_slider_help($path, $arg) {
   if ($path == 'admin/help#flux_slider') {
     $help_text = '<h3>' . t('Download Verify module description') . '</h3>';
-    $help_text = '<p>' . t('Module for integrating the Flux Slider JavaScript library and controlling its settings through an administration interface.') . '</p>';
+    $help_text = '<p>' . t('Module for integrating the Flux Slider JavaScript library and controlling its configuration through an administration interface.') . '</p>';
     $help_text = '<p>' . t('The Flux Library must be installed at <em>/sites/all/libraries/flux-slider/flux.js</em>') . '</p>';
     $help_text = '<p>' . t('The module creates a block which can be positioned within the main blocks configuration page.') . '</p>';
     $help_text = '<p>' . t('Currently only supporting 4 images to be used within the slider along with 4 captions to appear with the transition. The images are currently served from the modules <em>/images/</em> directory but the image path can be changed to anything that is within the public files folders.') . '</p>';
@@ -46,7 +46,7 @@ function flux_slider_menu() {
     'type' => MENU_NORMAL_ITEM,
   );
   $items['admin/structure/flux-slider/slides'] = array(
-    'title' => 'Flux Slider Slides',
+    'title' => 'Flux-Slider slides',
     'description' => 'Configure slider content',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('flux_slider_slide_configuration_form'),
@@ -56,7 +56,7 @@ function flux_slider_menu() {
     'weight' => 1,
   );
   $items['admin/structure/flux-slider/options'] = array(
-    'title' => 'Flux Slider Options',
+    'title' => 'Flux-Slider options',
     'description' => 'Configure slider options',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('flux_slider_option_configuration_form'),
@@ -165,7 +165,8 @@ function flux_slider_block_view($block_name = '') {
       // Add the Flux javascript library.
       if($installed_min) {
         $lib_path = $flux_path . '/flux.min.js';
-      } else if ($installed_full) {
+      }
+      else if ($installed_full) {
         $lib_path = $flux_path . '/flux.js';
       }
 

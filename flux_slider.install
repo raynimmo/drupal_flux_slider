@@ -54,14 +54,14 @@ function flux_slider_requirements($phase) {
     // Check if Flux Slider library is installed.
     if ($installed) {
       $requirements['flux_slider_library'] = array(
-        'title' => 'Flux Slider JavaScript Library',
+        'title' => 'Flux-Slider JavaScript library',
         'value' => 'Installed',
         'severity' => REQUIREMENT_OK,
       );
     }
     else {
       $requirements['flux_slider_library'] = array(
-        'title' => 'Flux Slider JavaScript Library',
+        'title' => 'Flux-Slider JavaScript library',
         'value' => 'Not Installed, please see the README.txt for instructions on installing the library',
         'severity' => REQUIREMENT_ERROR,
       );
