@@ -9,7 +9,14 @@
  */
 function flux_slider_help($path, $arg) {
   if ($path == 'admin/help#flux_slider') {
-    return t('Refer to the README.txt for further information regarding the use of the Flux Slider module.');
+    $help_text = '<h3>' . t('Download Verify module description') . '</h3>';
+    $help_text = '<p>' . t('Module for integrating the Flux Slider JavaScript library and controlling its settings through an administration interface.') . '</p>';
+    $help_text = '<p>' . t('The Flux Library must be installed at <em>/sites/all/libraries/flux-slider/flux.js</em>') . '</p>';
+    $help_text = '<p>' . t('The module creates a block which can be positioned within the main blocks configuration page.') . '</p>';
+    $help_text = '<p>' . t('Currently only supporting 4 images to be used within the slider along with 4 captions to appear with the transition. The images are currently served from the modules <em>/images/</em> directory but the image path can be changed to anything that is within the public files folders.') . '</p>';
+    $help_text = '<p>' . t('Refer to the README.txt for further information regarding the use of the Flux Slider module.') . '</p>';
+
+    return $help_text;
   }
 }
 
@@ -121,23 +128,17 @@ function flux_slider_get_alttext() {
 function flux_slider_block_view($block_name = '') {
   if ($block_name == 'flux_slider') {
     // Check if the flux library has been installed.
-    //global $base_path;
-    //$flux_path = $_SERVER['DOCUMENT_ROOT'] . $base_path . '/sites/all/libraries/flux-slider';
-    //$installed = file_exists($flux_path . '/flux.min.js') || file_exists($flux_path . '/flux.js');
     $flux_path = libraries_get_path('flux-slider');
     $installed_full = file_exists($flux_path . '/flux.js');
     $installed_min = file_exists($flux_path . '/flux.min.js');
-    //if (!$installed) {
     if ((!$installed_min) && (!$installed_full)) {
       drupal_set_message(t('The Flux Slider library is not installed, consult the modules README.txt for instructions.'), 'error');
     }
     else {
       // Set up the slider variables.
       $module_path = drupal_get_path('module', 'flux_slider');
-      // Get the images.
       $images = flux_slider_get_images($module_path);
       $img_alt = flux_slider_get_alttext();
-      // Get the captions.
       $captions = flux_slider_get_captions();
       $img_width = variable_get('trans_width');
       $img_height = variable_get('trans_height');
@@ -162,16 +163,14 @@ function flux_slider_block_view($block_name = '') {
       $content = '<div id="slider">' . $all_images . '</div>';
 
       // Add the Flux javascript library.
-      //$lib_path = $base_path . "sites/all/libraries/flux-slider/flux.js";
-      // Add the Flux javascript library. Prefer minified file if exists
       if($installed_min) {
         $lib_path = $flux_path . '/flux.min.js';
       } else if ($installed_full) {
         $lib_path = $flux_path . '/flux.js';
       }
 
-
       $js_path = $module_path . '/js/flux_slider.js';
+      $css_path = $module_path . '/css/flux_slider.css';
 
       $options = array(
         'group' => JS_LIBRARY,
@@ -195,6 +194,9 @@ function flux_slider_block_view($block_name = '') {
       // Add the required JavaScript files and settings.
       drupal_add_js(array('flux_slider' => $flux_settings), 'setting');
       drupal_add_js($js_path, $flux_settings);
+
+      // Add frontend styles
+      drupal_add_css($css_path);
 
       // Build the block.
       $block = array(

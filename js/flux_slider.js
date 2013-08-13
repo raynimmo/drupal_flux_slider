@@ -33,20 +33,6 @@
        var flux_width = Drupal.settings.flux_slider.flux_width;
        var flux_height = Drupal.settings.flux_slider.flux_height;
 
-       console.log("flux_width:"+flux_width);
-       console.log("screen_width:"+screen.width);
-       console.log("document_width:"+document.documentElement.clientWidth);
-
-       /*
-       var doc_width = document.documentElement.clientWidth;
-       if(doc_width < flux_width) {
-          flux_width=doc_width;
-          console.log("flux_width:"+flux_width);
-
-       }
-       */
-
-
        // Initialise the slider.
         var myFlux = new flux.slider('#slider', {
           autoplay: flux_autoplay_bool,
@@ -56,7 +42,7 @@
           controls: flux_controls_bool,
           captions: flux_captions_bool,
           width: flux_width,
-          height: flux_height,
+          height: flux_height
         });
         // Adjust container height to cope with bug http://drupal.org/node/1880556.
         // Additional height required if pagination controls are shown.
@@ -65,18 +51,6 @@
           "height":flux_container_height,
           "overflow":"hidden"
         });
-
-        /*
-        jQuery("div#slider").css({
-          "height":flux_container_height,
-          "width":flux_width,
-          "overflow":"hidden"
-        });
-        var flux_left_margin = flux_width*0.5;
-        jQuery("div.surface .images").css({
-          "margin-left":"-"+flux_left_margin+"px",
-          "overflow":"hidden"
-        });*/
        }
      }
  }(jQuery));

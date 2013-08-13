@@ -37,21 +37,11 @@ fieldset#edit-trans-opts .form-type-radios .form-item{
   margin-left:20px;
 }
 
-
 #edit-actions{
   clear:both;
 }
 
-
 .form-item span.small{
   font-size:80%;
   font-style: italic;
-}
-
-
-
-/*slider slides page styling*/
-fieldset#edit-slider-imgs .form-item{
-  margin-bottom:0px;
-  padding-bottom:1px;
 }

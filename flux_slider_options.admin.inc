@@ -35,7 +35,6 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   $form['trans_radios']['trans_type'] = array(
     '#type' => 'radios',
     '#default_value' => variable_get('trans_type', 'bars'),
-    //'#options' => drupal_map_assoc(array(
     '#options' => array(
       'bars' => t('Vertical bars dropping from the top down.'),
       'blinds' => t('Blinds sweeping from left to right.'),
@@ -51,7 +50,6 @@ function flux_slider_option_configuration_form($form, &$form_state) {
       'cube' => t('Single 3D cube rotating right to left.'),
       'tiles3d' => t('3D blocks changing from left to right.'),
       'turn' => t('Page turn effect from right to left.'),
-    //)),
     ),
     '#title' => t('Select a transition to perform between slides.'),
     '#description' => t('Some of the 3D transitions will not function for older browsers.<br />Both of the concentric circle transitions will result in an image jump if the image is larger than the slider.'),
