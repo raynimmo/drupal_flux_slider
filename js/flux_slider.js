@@ -9,27 +9,20 @@
  *  2D options: bars, blinds, blocks, blocks2, concentric, dissolve, slide, warp, zip.
  *  3D options: bars3d, blinds3d, cube, tiles3d, turn.
  */
-
 (function ($) {
    Drupal.behaviors.fluxSlider = {
      attach: function (context, settings) {
        // Get the settings.
        var flux_autoplay = Drupal.settings.flux_slider.flux_autoplay;
        var flux_autoplay_bool = (flux_autoplay == 1 ? true : false);
-
        var flux_transition = Drupal.settings.flux_slider.flux_transition;
-
        var flux_delay = Drupal.settings.flux_slider.flux_delay;
-
        var flux_pagination = Drupal.settings.flux_slider.flux_pagination;
        var flux_pagination_bool = (flux_pagination == 1 ? true : false);
-
        var flux_controls = Drupal.settings.flux_slider.flux_controls;
        var flux_controls_bool = (flux_controls == 1 ? true : false);
-
        var flux_captions = Drupal.settings.flux_slider.flux_captions;
        var flux_captions_bool = (flux_captions == 1 ? true : false);
-
        var flux_width = Drupal.settings.flux_slider.flux_width;
        var flux_height = Drupal.settings.flux_slider.flux_height;
 

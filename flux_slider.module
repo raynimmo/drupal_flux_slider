@@ -36,7 +36,7 @@ function flux_slider_permission() {
  * Implements hook_menu().
  */
 function flux_slider_menu() {
-  $items['admin/structure/flux-slider'] = array(
+  $items['admin/config/content/flux-slider'] = array(
     'title' => 'Flux Slider',
     'description' => 'Configure slider content and options',
     'page callback' => 'drupal_get_form',
@@ -45,7 +45,7 @@ function flux_slider_menu() {
     'file' => 'flux_slider_slides.admin.inc',
     'type' => MENU_NORMAL_ITEM,
   );
-  $items['admin/structure/flux-slider/slides'] = array(
+  $items['admin/config/content/flux-slider/slides'] = array(
     'title' => 'Flux-Slider slides',
     'description' => 'Configure slider content',
     'page callback' => 'drupal_get_form',
@@ -55,7 +55,7 @@ function flux_slider_menu() {
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => 1,
   );
-  $items['admin/structure/flux-slider/options'] = array(
+  $items['admin/config/content/flux-slider/options'] = array(
     'title' => 'Flux-Slider options',
     'description' => 'Configure slider options',
     'page callback' => 'drupal_get_form',

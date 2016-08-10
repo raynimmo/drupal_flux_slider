@@ -9,4 +9,4 @@ files[] = flux_slider_slides.admin.inc
 dependencies[] = block
 dependencies[] = libraries
 
-configure = admin/structure/flux-slider
+configure = admin/config/content/flux-slider

@@ -1,4 +1,9 @@
-/*slider slides page styling*/
+/**
+ * @file
+ * CSS styles required for front-end display
+ */
+
+/* slider slides page stylin g*/
 fieldset#edit-slider-imgs .form-item{
   margin-bottom:0px;
   padding-bottom:1px;
