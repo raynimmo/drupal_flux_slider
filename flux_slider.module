@@ -9,7 +9,7 @@
  */
 function flux_slider_help($path, $arg) {
   if ($path == 'admin/help#flux_slider') {
-    $help_text = '<h3>' . t('Download Verify module description') . '</h3>';
+    $help_text = '<h3>' . t('Flux Slider module description') . '</h3>';
     $help_text = '<p>' . t('Module for integrating the Flux Slider JavaScript library and controlling its configuration through an administration interface.') . '</p>';
     $help_text = '<p>' . t('The Flux Library must be installed at <em>/sites/all/libraries/flux-slider/flux.js</em>') . '</p>';
     $help_text = '<p>' . t('The module creates a block which can be positioned within the main blocks configuration page.') . '</p>';
@@ -87,10 +87,10 @@ function flux_slider_block_info() {
 function flux_slider_get_images() {
   $images = array();
   $image_fids = array(
-    variable_get('first_img', ''),
-    variable_get('second_img', ''),
-    variable_get('third_img', ''),
-    variable_get('fourth_img', ''),
+    variable_get('flux_slider_first_img', ''),
+    variable_get('flux_slider_second_img', ''),
+    variable_get('flux_slider_third_img', ''),
+    variable_get('flux_slider_fourth_img', ''),
   );
   foreach ($image_fids as $img_fid) {
       // Load image object
@@ -102,35 +102,6 @@ function flux_slider_get_images() {
       array_push($images, $img_url);
   }
   return $images;
-}
-
-
-/**
- * Function to retrieve captions from database.
- */
-function flux_slider_get_captions() {
-  $captions = array();
-  $captions = array(
-    variable_get('first_capt', 'This is the first caption'),
-    variable_get('second_capt', 'This is the second caption'),
-    variable_get('third_capt', 'This is the third caption'),
-    variable_get('fourth_capt', 'This is the fourth caption'),
-  );
-  return $captions;
-}
-
-/**
- * Function to retrieve alternative text for images from database.
- */
-function flux_slider_get_alttext() {
-  $alttext = array();
-  $alttext = array(
-    variable_get('first_alt', 'This is the first alt text'),
-    variable_get('second_alt', 'This is the second alt text'),
-    variable_get('third_alt', 'This is the third alt text'),
-    variable_get('fourth_alt', 'This is the fourth alt text'),
-  );
-  return $alttext;
 }
 
 /**
@@ -148,11 +119,17 @@ function flux_slider_block_view($block_name = '') {
     else {
       // Set up the slider variables.
       $module_path = drupal_get_path('module', 'flux_slider');
+
       $image_paths = flux_slider_get_images();
-      $img_alt = flux_slider_get_alttext();
-      $captions = flux_slider_get_captions();
-      $img_width = variable_get('trans_width');
-      $img_height = variable_get('trans_height');
+
+      $slider_settings = variable_get('flux_slider_settings');
+
+      $img_alt = variable_get('flux_slider_alts');
+      $captions = variable_get('flux_slider_captions');
+
+      $img_width = variable_get('flux_slider_trans_width');
+      $img_height = variable_get('flux_slider_trans_height');
+
       $img_class = 'slider-images';
       $attributes = array($img_class);
       $all_images = '';
@@ -191,16 +168,17 @@ function flux_slider_block_view($block_name = '') {
         'preprocess' => FALSE,
         'defer' => FALSE,
       );
+
       // Assign the settings for the JavaScript initialization routine.
       $flux_settings = array(
-        'flux_autoplay' => variable_get('trans_autoplay'),
-        'flux_transition' => variable_get('trans_type'),
-        'flux_delay' => variable_get('trans_delay'),
-        'flux_pagination' => variable_get('trans_pagination'),
-        'flux_controls' => variable_get('trans_controls'),
-        'flux_captions' => variable_get('trans_captions'),
-        'flux_width' => variable_get('trans_width'),
-        'flux_height' => variable_get('trans_height'),
+        'flux_autoplay' => $slider_settings[1],
+        'flux_transition' => $slider_settings[0],
+        'flux_delay' => $slider_settings[2],
+        'flux_pagination' => $slider_settings[3],
+        'flux_controls' => $slider_settings[4],
+        'flux_captions' => $slider_settings[5],
+        'flux_width' => $slider_settings[6],
+        'flux_height' => $slider_settings[7],
       );
       // Add the Flux library.
       drupal_add_js($lib_path, $options);

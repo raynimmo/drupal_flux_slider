@@ -9,33 +9,33 @@
  */
 function flux_slider_install() {
   // Set up basic settings so the slider works when installed.
-  variable_set('trans_type', 'blocks2');
-  variable_set('trans_autoplay', 1);
-  variable_set('trans_delay', 6000);
-  variable_set('trans_pagination', 0);
-  variable_set('trans_controls', 1);
-  variable_set('trans_captions', 1);
-  variable_set('trans_width', 900);
-  variable_set('trans_height', 400);
+  $carousel_settings =  array('blocks2', 1, 6000, 0, 1, 1, 900, 400);
+  variable_set('flux_slider_settings', $carousel_settings);
 
   // Set up the default image paths.
   $module_path = drupal_get_path('module', 'flux_slider');
-  variable_set('first_img', $module_path . '/images/slider-img-1.jpg');
-  variable_set('second_img', $module_path . '/images/slider-img-2.jpg');
-  variable_set('third_img', $module_path . '/images/slider-img-3.jpg');
-  variable_set('fourth_img', $module_path . '/images/slider-img-4.jpg');
+  variable_set('flux_slider_first_img', $module_path . '/images/slider-img-1.jpg');
+  variable_set('flux_slider_second_img', $module_path . '/images/slider-img-2.jpg');
+  variable_set('flux_slider_third_img', $module_path . '/images/slider-img-3.jpg');
+  variable_set('flux_slider_fourth_img', $module_path . '/images/slider-img-4.jpg');
 
   // Set up the default caption values.
-  variable_set('first_capt', 'This is the first caption');
-  variable_set('second_capt', 'This is the second caption');
-  variable_set('third_capt', 'This is the third caption');
-  variable_set('fourth_capt', 'This is the fourth caption');
+  $default_captions = array(
+    'This is the first caption',
+    'This is the second caption',
+    'This is the third caption',
+    'This is the fourth caption');
+
+  variable_set('flux_slider_captions', $default_captions);
 
   // Set up the default alt text values.
-  variable_set('first_alt', 'This is the first alt text');
-  variable_set('second_alt', 'This is the second alt text');
-  variable_set('third_alt', 'This is the third alt text');
-  variable_set('fourth_alt', 'This is the fourth alt text');
+  $default_alts = array(
+    'This is the first alt text',
+    'This is the second alt text',
+    'This is the third alt text',
+    'This is the fourth alt text');
+
+  variable_set('flux_slider_alts', $default_alts);
 }
 
 /**
@@ -75,33 +75,17 @@ function flux_slider_requirements($phase) {
  */
 function flux_slider_uninstall() {
   // Delete all of the slide image database entries.
-  variable_del('first_img');
-  variable_del('second_img');
-  variable_del('third_img');
-  variable_del('fourth_img');
-
+  variable_del('flux_slider_first_img');
+  variable_del('flux_slider_second_img');
+  variable_del('flux_slider_third_img');
+  variable_del('flux_slider_fourth_img');
   // Delete all of the slide captions.
-  variable_del('first_capt');
-  variable_del('second_capt');
-  variable_del('third_capt');
-  variable_del('fourth_capt');
-
+  variable_del('flux_slider_captions');
   // Delete all of the image alt text values.
-  variable_del('first_alt');
-  variable_del('second_alt');
-  variable_del('third_alt');
-  variable_del('fourth_alt');
-
+  variable_del('flux_slider_alts');
   // @todo: Delete the folder the slider images were contained in.
   // Remove slide variables.
-  variable_del('trans_type');
-  variable_del('trans_autoplay');
-  variable_del('trans_delay');
-  variable_del('trans_pagination');
-  variable_del('trans_controls');
-  variable_del('trans_captions');
-  variable_del('trans_width');
-  variable_del('trans_height');
+  variable_del('flux_slider_settings');
 }
 
 /**
@@ -124,4 +108,159 @@ function flux_slider_update_7002() {
   variable_set('fourth_alt', 'This is the fourth alt text');
   return t('Adding options of setting image alternative text values');
 }
+/**
+ * changes to variable naming convention
+ */
+function flux_slider_update_7003() {
+  variable_set('flux_slider_trans_type', variable_get('trans_type'));
+  variable_set('flux_slider_trans_autoplay', variable_get('trans_autoplay'));
+  variable_set('flux_slider_trans_delay', variable_get('trans_delay'));
+  variable_set('flux_slider_trans_pagination', variable_get('trans_pagination'));
+  variable_set('flux_slider_trans_controls', variable_get('trans_controls'));
+  variable_set('flux_slider_trans_captions', variable_get('trans_captions'));
+  variable_set('flux_slider_trans_width', variable_get('trans_width'));
+  variable_set('flux_slider_trans_height', variable_get('trans_height'));
 
+  variable_set('flux_slider_first_img', variable_get('first_img'));
+  variable_set('flux_slider_second_img', variable_get('second_img'));
+  variable_set('flux_slider_third_img', variable_get('third_img'));
+  variable_set('flux_slider_fourth_img', variable_get('fourth_img'));
+
+  // Set up the default caption values.
+  variable_set('flux_slider_first_capt', variable_get('first_capt'));
+  variable_set('flux_slider_second_capt', variable_get('second_capt'));
+  variable_set('flux_slider_third_capt', variable_get('third_capt'));
+  variable_set('flux_slider_fourth_capt', variable_get('fourth_capt'));
+
+  // Set up the default alt text values.
+  variable_set('flux_slider_first_alt', variable_get('first_alt'));
+  variable_set('flux_slider_second_alt', variable_get('second_alt'));
+  variable_set('flux_slider_third_alt', variable_get('third_alt'));
+  variable_set('flux_slider_fourth_alt', variable_get('fourth_alt'));
+  return t('Renaming flux slider variables.');
+}
+
+/**
+ * Remove old variable entries
+ */
+function flux_slider_update_7004() {
+  // Delete all of the slide image database entries.
+  variable_del('first_img');
+  variable_del('second_img');
+  variable_del('third_img');
+  variable_del('fourth_img');
+
+  // Delete all of the slide captions.
+  variable_del('first_capt');
+  variable_del('second_capt');
+  variable_del('third_capt');
+  variable_del('fourth_capt');
+
+  // Delete all of the image alt text values.
+  variable_del('first_alt');
+  variable_del('second_alt');
+  variable_del('third_alt');
+  variable_del('fourth_alt');
+
+  // Remove slide variables.
+  variable_del('trans_type');
+  variable_del('trans_autoplay');
+  variable_del('trans_delay');
+  variable_del('trans_pagination');
+  variable_del('trans_controls');
+  variable_del('trans_captions');
+  variable_del('trans_width');
+  variable_del('trans_height');
+  return t('Removed old flux slider variable entries.');
+}
+
+/**
+ * Combine captions into single variable
+ */
+function flux_slider_update_7005() {
+  $captions = array();
+  $captions = array( 
+                variable_get('flux_slider_first_capt'), 
+                variable_get('flux_slider_second_capt'), 
+                variable_get('flux_slider_third_capt'),
+                variable_get('flux_slider_fourth_capt')
+              );
+  variable_set('flux_slider_captions', $captions);
+  return t('Merge caption variables.');
+}
+
+
+  
+/**
+ * Delete all of the old captions.
+ */
+function flux_slider_update_7006() {
+  variable_del('flux_slider_first_capt');
+  variable_del('flux_slider_second_capt');
+  variable_del('flux_slider_third_capt');
+  variable_del('flux_slider_fourth_capt');
+  return t('Deleted old caption variables.');
+}
+
+
+/**
+ * Combine alt texts into single variable
+ */
+function flux_slider_update_7007() {
+  $alts = array();
+  $alts = array( 
+                variable_get('flux_slider_first_alt'), 
+                variable_get('flux_slider_second_alt'), 
+                variable_get('flux_slider_third_alt'),
+                variable_get('flux_slider_fourth_alt')
+              );
+  variable_set('flux_slider_alts', $alts);
+  return t('Merge alt text variables.');
+}
+
+  
+/**
+ * Delete all of the old image alt text values.
+ */
+function flux_slider_update_7008() {
+  variable_del('flux_slider_first_alt');
+  variable_del('flux_slider_second_alt');
+  variable_del('flux_slider_third_alt');
+  variable_del('flux_slider_fourth_alt');
+return t('Deleted old alt text variables.');
+}
+
+
+/**
+ * Combine carousel settings into single variable
+ */
+function flux_slider_update_7009() {
+  $carousel_settings = array();
+  $carousel_settings = array( 
+                variable_get('flux_slider_trans_type'), 
+                variable_get('flux_slider_trans_autoplay'), 
+                variable_get('flux_slider_trans_delay'),
+                variable_get('flux_slider_trans_pagination'),
+                variable_get('flux_slider_trans_controls'), 
+                variable_get('flux_slider_trans_captions'), 
+                variable_get('flux_slider_trans_width'),
+                variable_get('flux_slider_trans_height')
+              );
+  variable_set('flux_slider_settings', $carousel_settings);
+  return t('Merge carousel setting variables.');
+}
+
+/**
+ * Delete all of the old carousel setrtings variables.
+ */
+function flux_slider_update_7010() {
+  variable_del('flux_slider_trans_type');
+  variable_del('flux_slider_trans_autoplay');
+  variable_del('flux_slider_trans_delay');
+  variable_del('flux_slider_trans_pagination');
+  variable_del('flux_slider_trans_controls');
+  variable_del('flux_slider_trans_captions');
+  variable_del('flux_slider_trans_width');
+  variable_del('flux_slider_trans_height');
+return t('Deleted old carousel settings variables.');
+}

@@ -23,6 +23,10 @@ function flux_slider_option_configuration_form($form, &$form_state) {
     ),
   );
 
+  // get the settings
+  $slider_settings = array();
+  $slider_settings = variable_get('flux_slider_settings');
+
   // Set up fieldset for radio buttons.
   $form['trans_radios'] = array(
     '#type' => 'fieldset',
@@ -34,7 +38,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Set up radio buttons for 2D transition effect.
   $form['trans_radios']['trans_type'] = array(
     '#type' => 'radios',
-    '#default_value' => variable_get('trans_type', 'bars'),
+    '#default_value' => $slider_settings[0],
     '#options' => array(
       'bars' => t('Vertical bars dropping from the top down.'),
       'blinds' => t('Blinds sweeping from left to right.'),
@@ -66,7 +70,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element for autoplay selection.
   $form['trans_opts']['trans_autoplay'] = array(
     '#type' => 'radios',
-    '#default_value' => variable_get('trans_autoplay', 1),
+    '#default_value' => $slider_settings[1],
     '#options' => array(
       0 => t('Off'),
       1 => t('On'),
@@ -77,7 +81,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element for delay setting.
   $form['trans_opts']['trans_delay'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('trans_delay', 6000),
+    '#default_value' => $slider_settings[2],
     '#title' => t('Transition delay'),
     '#size' => 6,
     '#field_suffix' => t('milliseconds'),
@@ -86,7 +90,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element for pagination display.
   $form['trans_opts']['trans_pagination'] = array(
     '#type' => 'radios',
-    '#default_value' => variable_get('trans_pagination', 0),
+    '#default_value' => $slider_settings[3],
     '#options' => array(
       0 => t('Hide'),
       1 => t('Show'),
@@ -97,7 +101,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element for display of controls.
   $form['trans_opts']['trans_controls'] = array(
     '#type' => 'radios',
-    '#default_value' => variable_get('trans_controls', 0),
+    '#default_value' => $slider_settings[4],
     '#options' => array(
         0 => t('Hide'),
         1 => t('Show'),
@@ -108,7 +112,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element for display of captions.
   $form['trans_opts']['trans_captions'] = array(
     '#type' => 'radios',
-    '#default_value' => variable_get('trans_captions', 0),
+    '#default_value' => $slider_settings[5],
     '#options' => array(
         0 => t('Hide'),
         1 => t('Show'),
@@ -119,7 +123,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element to set output width.
   $form['trans_opts']['trans_width'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('trans_width', 960),
+    '#default_value' => $slider_settings[6],
     '#title' => t('Slider width'),
     '#size' => 6,
     '#field_suffix' => t('pixels'),
@@ -128,7 +132,7 @@ function flux_slider_option_configuration_form($form, &$form_state) {
   // Form element to set output height.
   $form['trans_opts']['trans_height'] = array(
     '#type' => 'textfield',
-    '#default_value' => variable_get('trans_height', 300),
+    '#default_value' => $slider_settings[7],
     '#title' => t('Slider height'),
     '#size' => 6,
     '#field_suffix' => t('pixels'),
