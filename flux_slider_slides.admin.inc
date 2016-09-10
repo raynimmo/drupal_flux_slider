@@ -10,6 +10,7 @@
 function flux_slider_slide_configuration_form($form, &$form_state) {
   // Get the path to the module.
   $path = drupal_get_path('module', 'flux_slider');
+
   // Attach the CSS to the form.
   $form['#attached'] = array(
     'css' => array(
@@ -34,6 +35,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
   );
 
   // First image field.
+  /*
   $form['slider_imgs']['slider_imgs_first']['first_img'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('first_img', $path . '/images/slider-img-1.jpg'),
@@ -41,6 +43,24 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 60,
     '#weight' => 3,
   );
+  */
+  
+
+
+  // Add a managed file form element for uploading an image
+  
+  $form['slider_imgs']['slider_imgs_first']['first_img'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('First image path'),
+    '#description' => t('Set the first carousel image.'),
+    '#upload_location' => 'public://flux_slider',
+    '#default_value' => variable_get('first_img', '')
+  );
+  
+
+  
+
+
   // First caption field.
   $form['slider_imgs']['slider_imgs_first']['first_capt'] = array(
     '#type' => 'textfield',
@@ -58,6 +78,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#weight' => 5,
   );
 
+
   $form['slider_imgs']['slider_imgs_second'] = array(
     '#type' => 'fieldset',
     '#title' => t('second Image'),
@@ -65,6 +86,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#collapsible' => TRUE,
   );
   // Second image field.
+  /*
   $form['slider_imgs']['slider_imgs_second']['second_img'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('second_img', $path . '/images/slider-img-2.jpg'),
@@ -72,6 +94,16 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 60,
     '#weight' => 7,
   );
+  */
+  $form['slider_imgs']['slider_imgs_second']['second_img'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Second image path'),
+    '#description' => t('Set the second carousel image.'),
+    '#upload_location' => 'public://flux_slider',
+    '#default_value' => variable_get('second_img', '')
+  );
+
+
   // Second caption field.
   $form['slider_imgs']['slider_imgs_second']['second_capt'] = array(
     '#type' => 'textfield',
@@ -89,6 +121,10 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#weight' => 9,
   );
 
+
+
+
+
   $form['slider_imgs']['slider_imgs_third'] = array(
     '#type' => 'fieldset',
     '#title' => t('Third image'),
@@ -96,6 +132,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#collapsible' => TRUE,
   );
   // Third image field.
+  /*
   $form['slider_imgs']['slider_imgs_third']['third_img'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('third_img', $path . '/images/slider-img-3.jpg'),
@@ -103,6 +140,16 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 60,
     '#weight' => 10,
   );
+  */
+  $form['slider_imgs']['slider_imgs_third']['third_img'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Third image path'),
+    '#description' => t('Set the third carousel image.'),
+    '#upload_location' => 'public://flux_slider',
+    '#default_value' => variable_get('third_img', '')
+  );
+
+
   // Third caption field.
   $form['slider_imgs']['slider_imgs_third']['third_capt'] = array(
     '#type' => 'textfield',
@@ -120,6 +167,11 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#weight' => 12,
   );
 
+
+
+
+
+
   $form['slider_imgs']['slider_imgs_fourth'] = array(
     '#type' => 'fieldset',
     '#title' => t('Fourth image'),
@@ -127,6 +179,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#collapsible' => TRUE,
   );
   // Fourth image field.
+  /*
   $form['slider_imgs']['slider_imgs_fourth']['fourth_img'] = array(
     '#type' => 'textfield',
     '#default_value' => variable_get('fourth_img', $path . '/images/slider-img-4.jpg'),
@@ -134,6 +187,15 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 60,
     '#weight' => 14,
   );
+  */
+  $form['slider_imgs']['slider_imgs_fourth']['fourth_img'] = array(
+    '#type' => 'managed_file',
+    '#title' => t('Fourth image path'),
+    '#description' => t('Set the fourth carousel image.'),
+    '#upload_location' => 'public://flux_slider',
+    '#default_value' => variable_get('fourth_img', '')
+  );
+
   // Fourth caption field.
   $form['slider_imgs']['slider_imgs_fourth']['fourth_capt'] = array(
     '#type' => 'textfield',
@@ -150,5 +212,48 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
     '#size' => 40,
     '#weight' => 16,
   );
+
+
+
+
+
+  // Add custom submit handler to set the file status to permanent
+  $form['#submit'][] = 'flux_slider_slide_configuration_form_submit';
+
+
+
   return system_settings_form($form);
 }
+
+
+/*
+ * Submit handler for making the file permanent
+ */
+function flux_slider_slide_configuration_form_submit($form, &$form_state){
+
+
+  $form['slider_imgs']['slider_imgs_first']['first_img']['#file']->status = FILE_STATUS_PERMANENT;
+  file_save($form['slider_imgs']['slider_imgs_first']['first_img']['#file']);
+
+  $form['slider_imgs']['slider_imgs_second']['second_img']['#file']->status = FILE_STATUS_PERMANENT;
+  file_save($form['slider_imgs']['slider_imgs_second']['second_img']['#file']);
+
+  $form['slider_imgs']['slider_imgs_third']['third_img']['#file']->status = FILE_STATUS_PERMANENT;
+  file_save($form['slider_imgs']['slider_imgs_third']['third_img']['#file']);
+
+  $form['slider_imgs']['slider_imgs_fourth']['fourth_img']['#file']->status = FILE_STATUS_PERMANENT;
+  file_save($form['slider_imgs']['slider_imgs_fourth']['fourth_img']['#file']);
+  
+/*
+  // Load the file via file.fid.
+  $file = file_load($form_state['values']['slider_imgs']['slider_imgs_first']['first_img']['#file']);
+  // Change status to permanent.
+  $file->status = FILE_STATUS_PERMANENT;
+  // Save.
+  file_save($file);
+  // Record that the module (in this example, user module) is using the file. 
+  file_usage_add($file, 'user', 'user', $account->uid);  
+  */
+}
+
+

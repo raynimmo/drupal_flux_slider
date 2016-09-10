@@ -83,16 +83,27 @@ function flux_slider_block_info() {
 /**
  * Function to retrieve image paths from database.
  */
-function flux_slider_get_images($path) {
+
+function flux_slider_get_images() {
   $images = array();
-  $images = array(
-    variable_get('first_img', $path . '/images/slider-img-1.jpg'),
-    variable_get('second_img', $path . '/images/slider-img-2.jpg'),
-    variable_get('third_img', $path . '/images/slider-img-3.jpg'),
-    variable_get('fourth_img', $path . '/images/slider-img-4.jpg'),
+  $image_fids = array(
+    variable_get('first_img', ''),
+    variable_get('second_img', ''),
+    variable_get('third_img', ''),
+    variable_get('fourth_img', ''),
   );
+  foreach ($image_fids as $img_fid) {
+      // Load image object
+      $img_file = file_load($img_fid);
+      //Get the uri
+      $img_uri = $img_file->uri;
+      // Get URL
+      $img_url = file_create_url($img_uri);
+      array_push($images, $img_url);
+  }
   return $images;
 }
+
 
 /**
  * Function to retrieve captions from database.
@@ -137,7 +148,7 @@ function flux_slider_block_view($block_name = '') {
     else {
       // Set up the slider variables.
       $module_path = drupal_get_path('module', 'flux_slider');
-      $images = flux_slider_get_images($module_path);
+      $image_paths = flux_slider_get_images();
       $img_alt = flux_slider_get_alttext();
       $captions = flux_slider_get_captions();
       $img_width = variable_get('trans_width');
@@ -148,7 +159,7 @@ function flux_slider_block_view($block_name = '') {
       $slide_count = 0;
 
       // Build the images.
-      foreach ($images as $img_path) {
+      foreach ($image_paths as $img_path) {
         $image = theme('image', array(
           'path' => $img_path,
           'alt' => $img_alt[$slide_count],
@@ -160,6 +171,7 @@ function flux_slider_block_view($block_name = '') {
         $all_images = $all_images . $image;
         $slide_count++;
       }
+      
       $content = '<div id="slider">' . $all_images . '</div>';
 
       // Add the Flux javascript library.
