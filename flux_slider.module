@@ -95,7 +95,7 @@ function flux_slider_get_images() {
   foreach ($image_fids as $img_fid) {
       // Load image object
       $img_file = file_load($img_fid);
-      //Get the uri
+      // Get the uri
       $img_uri = $img_file->uri;
       // Get URL
       $img_url = file_create_url($img_uri);
@@ -152,10 +152,10 @@ function flux_slider_block_view($block_name = '') {
       $content = '<div id="slider">' . $all_images . '</div>';
 
       // Add the Flux javascript library.
-      if($installed_min) {
+      if ($installed_min) {
         $lib_path = $flux_path . '/flux.min.js';
       }
-      else if ($installed_full) {
+      elseif ($installed_full) {
         $lib_path = $flux_path . '/flux.js';
       }
 

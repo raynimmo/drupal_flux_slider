@@ -247,7 +247,7 @@ function flux_slider_update_7009() {
                 variable_get('flux_slider_trans_height')
               );
   variable_set('flux_slider_settings', $carousel_settings);
-  return t('Merge carousel setting variables.');
+  return t('Merge carousel configuration variables.');
 }
 
 /**
@@ -262,5 +262,5 @@ function flux_slider_update_7010() {
   variable_del('flux_slider_trans_captions');
   variable_del('flux_slider_trans_width');
   variable_del('flux_slider_trans_height');
-return t('Deleted old carousel settings variables.');
+return t('Deleted old carousel configuration variables.');
 }

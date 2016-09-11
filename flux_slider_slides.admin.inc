@@ -183,7 +183,7 @@ function flux_slider_slide_configuration_form($form, &$form_state) {
 /*
  * Submit handler for making the file permanent
  */
-function flux_slider_slide_configuration_form_submit($form, &$form_state){
+function flux_slider_slide_configuration_form_submit($form, &$form_state) {
 
   $form['slider_imgs']['slider_imgs_first']['first_img']['#file']->status = FILE_STATUS_PERMANENT;
   file_save($form['slider_imgs']['slider_imgs_first']['first_img']['#file']);

@@ -5,6 +5,7 @@ core = 7.x
 files[] = flux_slider.module
 files[] = flux_slider_options.admin.inc
 files[] = flux_slider_slides.admin.inc
+files[] = flux_slider.test
 
 dependencies[] = block
 dependencies[] = libraries
