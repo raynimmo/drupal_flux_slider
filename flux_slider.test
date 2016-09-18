@@ -26,6 +26,7 @@ class FluxSliderTestCase extends DrupalWebTestCase {
     $this->assertTrue(isset($info['flux_slider']), t('Module list exists.'));
   }
 
+  /*
   public function testBlockView() {
     $data = module_invoke('flux_slider', 'block_view', 'flux_slider');
 
@@ -33,4 +34,5 @@ class FluxSliderTestCase extends DrupalWebTestCase {
 
     $this->assertEqual(t('Enabled modules'), $data['flux_'], t('Path to flux.js library is set'));
   }
+  */
 }
