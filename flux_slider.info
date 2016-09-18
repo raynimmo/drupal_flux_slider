@@ -2,6 +2,11 @@ name = Flux Slider
 description = Implementation of Flux Slider library
 core = 7.x
 
+stylesheets[all][] = css/flux_slider.css
+stylesheets[all][] = css/form_theme.css
+
+scripts[] = js/flux_slider.js
+
 files[] = flux_slider.module
 files[] = flux_slider_options.admin.inc
 files[] = flux_slider_slides.admin.inc

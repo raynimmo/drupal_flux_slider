@@ -4,33 +4,33 @@
  * Tests for Flux Slider module.
  */
 
- class FluxSliderTestCase extends DrupalWebTestCase {
+class FluxSliderTestCase extends DrupalWebTestCase {
 
- 	public function setUp() {
- 		parent::setUp('flux_slider');
- 	}
+  public function setUp() {
+    parent::setUp('flux_slider');
+  }
 
- 	public function getInfo() {
- 		return array(
- 				'name' => 'Flux Slider block functionality',
- 				'description' => 'Tests for Flux Slider module',
- 				'group' => 'Flux Slider'
- 			);
- 	}
+  public function getInfo() {
+    return array(
+      'name' => 'Flux Slider block functionality',
+      'description' => 'Tests for Flux Slider module',
+      'group' => 'Flux Slider'
+    );
+  }
 
- 	public function testBlockInfo() {
- 		$info = module_invoke('flux_slider', 'block_info');
+  public function testBlockInfo() {
+    $info = module_invoke('flux_slider', 'block_info');
 
- 		$this->assertEqual(1, count($info), t('Module defines a block.'));
+    $this->assertEqual(1, count($info), t('Module defines a block.'));
 
- 		$this->assertTrue(isset($info['flux_slider']), t('Module list exists.'));
- 	}
+    $this->assertTrue(isset($info['flux_slider']), t('Module list exists.'));
+  }
 
- 	public function testBlockView() {
- 		$data = module_invoke('flux_slider', 'block_view', 'flux_slider');
+  public function testBlockView() {
+    $data = module_invoke('flux_slider', 'block_view', 'flux_slider');
 
- 		$this->assertTrue(is_array($data),t('Block returns a renderable array.'));
+    $this->assertTrue(is_array($data), t('Block returns a renderable array.'));
 
- 		$this->assertEqual(t('Enabled Modules'), $data['flux_path'], t('Path to flux.js library is set'));
- 	}
- }
+    $this->assertEqual(t('Enabled modules'), $data['flux_'], t('Path to flux.js library is set'));
+  }
+}
